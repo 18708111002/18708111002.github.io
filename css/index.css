@@ -1,0 +1,28 @@
+@charset 'UTF-8';
+html{
+  font-size: 47%;
+  zoom:1;
+}
+body{
+  overflow: hidden;
+  height: 100%;
+}
+.grab-main{
+  position: relative;
+  width: 780px;
+  height: 390px;
+  background-color: #fff;
+  -webkit-tap-highlight-color:rgba(255,0,0,0);
+}
+.gold-juns{
+  position: absolute;
+  left:0px;
+  top:0px;
+  width: 220px;
+  height: 225px;
+  background-color: none;
+  z-index: 200;
+  background-image: url(../i/1.png);
+  background-repeat: no-repeat;
+  background-position: center;
+}

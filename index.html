@@ -2,11 +2,37 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="format-detection" content="telephone=no" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
 <title></title>
 
 <style type="text/css">
+
+div#bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-position: 95% 80%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  background-size: 400px 600px;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  zoom: 1;
+ 
+  opacity:1;
+  transition: opacity 1s linear;
+  -moz-transition: opacity 1s linear;
+  -webkit-transition: opacity 1s linear;
+  -o-transition: opacity 1s linear;
+}
 @font-face {
 	font-family: digit;
+	font-size: 28;
 	src: url('digital-7_mono.ttf') format("truetype");
 }
 </style>
@@ -16,9 +42,37 @@
 <script type="text/javascript" src="js/garden.js"></script>
 <script type="text/javascript" src="js/functions.js"></script>
 
+ <script src="js/prefixfree.min.js"></script>
+
 </head>
 
-<body>
+<body >
+
+<div id="bg"> </div>
+
+<script>
+// 定义图片路径 {num} 为 可变的图片序号
+var bgImgUrl = 'img/{num}.jpg', bgNum,
+    bgImgArr = [],
+    bgDiv = document.getElementById("bg");
+// 组合数组 此处 200 为 图开始序号 结束 210
+for (var i=1; i <= 10; i++){
+    bgImgArr.push(bgImgUrl.replace('{num}', i));
+}
+setBGimg();
+function setBGimg(d){
+    if(!bgNum || bgNum >= bgImgArr.length) bgNum = 0;
+    bgDiv.style.opacity = .001;
+    setTimeout(function(){
+        bgDiv.style.backgroundImage = 'url('+ bgImgArr[bgNum] +')';
+        bgNum++;
+        bgDiv.style.opacity = 1;
+    }, 1000);
+    if(typeof d == 'undefined')
+    setInterval(function(){setBGimg(true);}, 5000);
+    // 上一行的 6000 是背景图片自动切换时间(单位 毫秒)
+}
+</script>
 
 <div id="mainDiv">
 	<div id="content">
@@ -50,17 +104,26 @@
 			I want to say:<br />
 			Baby, I love you forever;<br />
 		</div>
+		
+
 		<div id="loveHeart">
 			<canvas id="garden"></canvas>
 			<div id="words">
+			
 				<div id="messages">
 					亲爱的，这是我们相爱在一起的时光。
-					<div id="elapseClock"></div>
+					<div id="elapseClock"></div>	
 				</div>
+				
+				<div id="pic">
+					
+				</div>
+				
 				<div id="loveu">
 					爱你直到永远。<br/>
 					<div class="signature">- Zhu</div>
 				</div>
+				
 			</div>
 		</div>
 	</div>

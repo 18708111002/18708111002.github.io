@@ -117,7 +117,7 @@ function timeElapse(date){
 function showMessages() {
 	adjustWordsPosition();
 	$('#messages').fadeIn(5000, function() {
-		showLoveU();
+		showPic();
 	});
 }
 
@@ -129,6 +129,13 @@ function adjustWordsPosition() {
 
 function adjustCodePosition() {
 	$('#code').css("margin-top", ($("#garden").height() - $("#code").height()) / 2);
+}
+
+function showPic() {
+	adjustWordsPosition();
+	$('#pic').fadeIn(3000, function() {
+		showLoveU();
+	});
 }
 
 function showLoveU() {
